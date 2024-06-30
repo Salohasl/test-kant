@@ -41,7 +41,22 @@ function shadowBtn(){
     }brandFunc();
 }shadowBtn();
 
+/* Для всплывающего окна */
+const menuBtn = document.querySelector('.menuBtn');
+const menu = document.querySelector('nav');
 
+menuBtn.addEventListener('click', () =>{
+    menuBtn.classList.toggle('active');
+    menu.classList.toggle('popUp');
+});
+document.addEventListener('click', function(event) {
+    // Проверяем, что клик произошел вне меню и кнопки открытия
+    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+        // Закрываем меню, добавляя класс, который изменяет его видимость или другие свойства
+        menu.classList.remove('popUp');
+        menuBtn.classList.remove('active');
+    }
+});
 
 
 function agree(){
@@ -60,7 +75,7 @@ function agree(){
             buttonForm.style.backgroundColor = 'grey';
             buttonForm.setAttribute('disabled', '.');
         }else{
-            buttonForm.style.backgroundColor = '#FFB400';
+            buttonForm.style.backgroundColor = 'black';
             buttonForm.removeAttribute('disabled', '.');
         }
     })
